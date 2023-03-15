@@ -1,0 +1,118 @@
+package com.example.demo.entities;
+
+import java.util.Arrays;
+
+public class CampReg {
+	
+	private int org_id;
+	private String cname,cdate,ctime,area, city,pincode;
+	private int bb_id;
+	
+	public CampReg() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public CampReg(String cname, String cdate, String ctime, String area, String city, String pincode, int bb_id) {
+		super();
+		this.cname = cname;
+		this.cdate = cdate;
+		this.ctime = ctime;
+		this.area = area;
+		this.city = city;
+		this.pincode = pincode;
+		this.bb_id = bb_id;
+	}
+	
+	
+
+	public CampReg(int org_id, String cname, String cdate, String ctime, String area, String city, String pincode,
+			int bb_id) {
+		super();
+		this.org_id = org_id;
+		this.cname = cname;
+		this.cdate = cdate;
+		this.ctime = ctime;
+		this.area = area;
+		this.city = city;
+		this.pincode = pincode;
+		this.bb_id = bb_id;
+	}
+
+	public int getOrg_id() {
+		return org_id;
+	}
+
+	public void setOrg_id(int org_id) {
+		this.org_id = org_id;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	public String getCdate() {
+		return cdate;
+	}
+
+	public void setCdate(String cdate) {
+		this.cdate = cdate;
+	}
+
+	public String getCtime() {
+		return ctime;
+	}
+
+	public void setCtime(String ctime) {
+		this.ctime = ctime;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+
+	public int getBb_id() {
+		return bb_id;
+	}
+
+	public void setBb_id(int bb_id) {
+		this.bb_id = bb_id;
+	}
+
+	@Override
+	public String toString() {
+		return "CampReg [org_id=" + org_id + ", cname=" + cname + ", cdate=" + cdate + ", ctime=" + ctime + ", area="
+				+ area + ", city=" + city + ", pincode=" + pincode + ", bb_id=" + bb_id + "]";
+	}
+	
+	
+	
+	
+	
+	
+}
+

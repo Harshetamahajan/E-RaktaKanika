@@ -1,0 +1,25 @@
+package com.example.demo.entities;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "advertisement")
+public class Advertisement {
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int ad_id;
+	
+	@Column
+	private byte[] ad_img;
+	
+	@OneToOne
+	@JoinColumn(name="org_id")
+	Organization org_id;
+
+	@OneToOne
+	@JoinColumn(name="cid")
+	Camp cid;
+
+}

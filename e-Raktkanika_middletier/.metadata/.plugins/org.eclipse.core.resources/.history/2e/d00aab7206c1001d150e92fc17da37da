@@ -1,0 +1,19 @@
+package com.example.demo.entities;
+
+import java.security.NoSuchAlgorithmException;
+
+
+
+
+public class PassBasedEnc {
+	
+	private static final Random random=new SecureRandom();
+	private static final String characters=
+			"0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz";
+	
+	private static final int iterations=10000;
+	private static final int keylength=256;
+	
+	
+
+}

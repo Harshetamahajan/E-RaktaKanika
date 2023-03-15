@@ -1,0 +1,8 @@
+package com.example.demo.entities;
+
+public class AdvetisementDummy {
+	
+	int private org_id, cid;
+	
+
+}

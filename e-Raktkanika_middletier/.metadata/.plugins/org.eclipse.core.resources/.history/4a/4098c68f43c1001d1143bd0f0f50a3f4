@@ -1,0 +1,37 @@
+package com.example.demo.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Advertisement;
+import com.example.demo.entities.Camp;
+import com.example.demo.entities.Organization;
+import com.example.demo.entities.Selected_bloodbanks;
+import com.example.demo.repositories.Selected_bloodbanksRepository;
+
+@Service
+public class Selected_bloodbanksService {
+
+	@Autowired
+	Selected_bloodbanksRepository sbbrepo;
+	
+	
+	public Selected_bloodbanks saveSbb(Selected_bloodbanks sbb)
+	{
+		return sbbrepo.save(sbb);
+	}
+	
+	
+	public List<Selected_bloodbanks> getC(int cid)
+	{
+		return sbbrepo.getC();
+	}
+	
+	public List<Selected_bloodbanks> getCamps(int cid)
+	{
+		return sbbrepo.getCamps();
+	}
+
+}

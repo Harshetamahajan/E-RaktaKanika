@@ -1,0 +1,100 @@
+package com.example.demo.entities;
+
+import java.util.Arrays;
+
+public class CampReg {
+	
+	private int org_id;
+	private String cname,cdate,ctime,area, city,pincode;
+	private int []sel_bb;
+	
+	public CampReg() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+	
+	public int getOrg_id() {
+		return org_id;
+	}
+
+	public void setOrg_id(int org_id) {
+		this.org_id = org_id;
+	}
+
+	public String getCname() {
+		return cname;
+	}
+
+	public void setCname(String cname) {
+		this.cname = cname;
+	}
+
+	public String getCdate() {
+		return cdate;
+	}
+
+	public void setCdate(String cdate) {
+		this.cdate = cdate;
+	}
+
+	public String getCtime() {
+		return ctime;
+	}
+
+	public void setCtime(String ctime) {
+		this.ctime = ctime;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
+	public void setArea(String area) {
+		this.area = area;
+	}
+
+	public String getCity() {
+		return city;
+	}
+
+	public void setCity(String city) {
+		this.city = city;
+	}
+
+	public String getPincode() {
+		return pincode;
+	}
+
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+
+	
+
+	
+
+	public int[] getSel_bb() {
+		return sel_bb;
+	}
+
+	public void setSel_bb(int[] sel_bb) {
+		this.sel_bb = sel_bb;
+	}
+
+	@Override
+	public String toString() {
+		return "CampReg [org_id=" + org_id + ", cname=" + cname + ", cdate=" + cdate + ", ctime=" + ctime + ", area="
+				+ area + ", city=" + city + ", pincode=" + pincode + ", sel_bb="
+				+ Arrays.toString(sel_bb) + "]";
+	}
+
+	
+	
+		
+	
+	
+	
+	
+	
+	
+}

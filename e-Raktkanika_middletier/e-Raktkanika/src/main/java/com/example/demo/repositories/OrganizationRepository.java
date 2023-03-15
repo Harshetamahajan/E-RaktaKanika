@@ -1,0 +1,25 @@
+package com.example.demo.repositories;
+
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entities.Login;
+import com.example.demo.entities.Organization;
+
+@Transactional
+@Repository
+public interface OrganizationRepository extends JpaRepository<Organization, Integer> {
+	
+	@Query("select o from Organization o where login_id = :l ")
+	public Organization getOrganization(Login l);
+	
+	
+	@Modifying
+	@Query("update Login set email=:email,contactno=:contactno where login_id=:login_id")
+	public int updateProfile(String email, String contactno,int login_id);
+	
+}

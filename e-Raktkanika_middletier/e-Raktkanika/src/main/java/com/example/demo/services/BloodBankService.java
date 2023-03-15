@@ -1,0 +1,64 @@
+package com.example.demo.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Address;
+import com.example.demo.entities.BloodBank;
+import com.example.demo.entities.Camp;
+import com.example.demo.entities.Login;
+import com.example.demo.repositories.BloodBankRepository;
+
+@Service
+public class BloodBankService {
+	@Autowired
+	BloodBankRepository bbrepo;
+	
+	public BloodBank getBloodBank(Login l)
+	{
+		return bbrepo.getBloodBank(l);
+	}
+	
+	public BloodBank Save(BloodBank b)
+	{
+		return bbrepo.save(b);
+	}
+
+//	public BloodBank getById(int stock_id)
+//	{
+//		return bbrepo.findById(stock_id).get();
+//	}
+//	
+	 public List<BloodBank> getAll()
+	 {
+		 return bbrepo.findAll();
+	 }
+	 
+	 public BloodBank getById(int bb_id)
+	 {
+		 return bbrepo.findById(bb_id).get();
+	 }
+	 
+	 public int updateProfile(String email,String contactno,int login_id)
+		{
+			return  bbrepo.updateProfile(email,contactno,login_id);
+		}
+	 
+	 public List<Camp> unapprovedCamps()
+		{
+			return  bbrepo.unapprovedCamps();
+		}
+
+	 public int approveCamps(int cid) 
+		{
+			
+			return bbrepo.approveCamps(cid);	
+		}
+		
+}
+
+
+
+

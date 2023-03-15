@@ -1,0 +1,88 @@
+package com.example.demo.entities;
+
+
+public class IUserReg {
+	
+	int uid;
+	String uname,adharno,email,password,contactno,area,city,pincode;
+	boolean status=true;
+	
+	public boolean isStatus() {
+		return status;
+	}
+	public void setStatus(boolean status) {
+		this.status = status;
+	}
+	public int getUid() {
+		return uid;
+	}
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+	public String getUname() {
+		return uname;
+	}
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+	public String getAdharno() {
+		return adharno;
+	}
+	public void setAdharno(String adharno) {
+		this.adharno = adharno;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
+	}
+	public String getContactno() {
+		return contactno;
+	}
+	public void setContactno(String contactno) {
+		this.contactno = contactno;
+	}
+	public String getArea() {
+		return area;
+	}
+	public void setArea(String area) {
+		this.area = area;
+	}
+	public String getCity() {
+		return city;
+	}
+	public void setCity(String city) {
+		this.city = city;
+	}
+	public String getPincode() {
+		return pincode;
+	}
+	public void setPincode(String pincode) {
+		this.pincode = pincode;
+	}
+	@Override
+	public String toString() {
+		return "IUserReg [uid=" + uid + ", uname=" + uname + ", adharno=" + adharno + ", email=" + email + ", password="
+				+ password + ", contactno=" + contactno + ", area=" + area + ", city=" + city + ", pincode=" + pincode
+				+ ", status=" + status + "]";
+	}
+
+
+	
+	
+	
+}
+
+
+
+
+
+
+

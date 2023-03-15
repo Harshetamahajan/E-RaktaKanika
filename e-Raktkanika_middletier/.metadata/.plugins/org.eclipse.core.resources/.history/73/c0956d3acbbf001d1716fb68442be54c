@@ -1,0 +1,33 @@
+package com.example.demo.services;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Camp;
+import com.example.demo.entities.Organization;
+import com.example.demo.repositories.CampRepository;
+
+@Service
+public class CampService {
+	
+	@Autowired
+	CampRepository crepo;
+	
+	public Camp Save(Camp c)
+	{
+		return crepo.save(c);		
+	}
+	
+	public Camp getCampById(Camp cid)
+	{
+		return (Camp) crepo.findById(cid).get();
+	}
+	
+//	public List<Camp> getCamps(Organization org_id)
+//	{
+//		return crepo.getCamps(org_id);
+//	}
+
+}

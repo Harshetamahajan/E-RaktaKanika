@@ -1,0 +1,60 @@
+package com.example.demo.repositories;
+
+
+import java.util.List;
+import java.util.Optional;
+import javax.transaction.Transactional;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entities.Admin;
+import com.example.demo.entities.BloodBank;
+import com.example.demo.entities.Camp;
+import com.example.demo.entities.Hospital;
+import com.example.demo.entities.Login;
+import com.example.demo.entities.Selected_bloodbanks;
+
+
+
+@Transactional
+@Repository
+public interface AdminRepository extends JpaRepository<Admin, Integer> {
+
+	
+	@Query("select b from BloodBank b where b.login_id.status=0")
+	public List<BloodBank> unapprovedBB();
+	
+	
+	@Query("select h from Hospital h where h.login_id.status=0 and hp_id is not null")
+	public List<Hospital> unapprovedHp();
+	
+	@Query("select s from Selected_bloodbanks s where sel_bb_status=0")
+	public List<Selected_bloodbanks> unapprovedCamps();
+	
+	@Query("select d from Login d where del_profile=1 and status=1")
+	public List<Login> list_to_deactivate();
+	
+	@Modifying
+	@Query("update Login L set status=1 where login_id=:login_id")
+	public int approveBB(@Param("login_id") int login_id);
+	
+	@Modifying
+	@Query("update Login L set status=1 where login_id=:login_id")
+	public int approveHp(@Param("login_id") int login_id); 
+	
+
+	@Modifying
+	@Query("update Selected_bloodbanks s set s.sel_bb_status=1, s.cid.camp_status=1  where s.sel_bb_id=:sel_bb_id")
+	public int approveCamps(@Param("sel_bb_id") int sel_bb_id);
+	
+	
+	
+	@Modifying
+	@Query("update Login c set status=0 where del_profile=1 and login_id=:loginid")
+	public int deactivateUser(@Param("loginid") int loginid);
+
+}

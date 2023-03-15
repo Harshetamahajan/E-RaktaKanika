@@ -1,0 +1,63 @@
+package com.example.demo.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entities.Address;
+import com.example.demo.entities.Login;
+import com.example.demo.entities.Organization;
+import com.example.demo.entities.OrganizationReg;
+import com.example.demo.entities.Role;
+import com.example.demo.services.AddressService;
+import com.example.demo.services.LoginService;
+import com.example.demo.services.OrganizationService;
+import com.example.demo.services.RoleService;
+
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+public class OrganizationController {
+	
+	
+	@Autowired
+	LoginService lservice;
+	
+	@Autowired
+	OrganizationService oservice;
+	
+	@Autowired
+	RoleService rservice;
+	
+	@Autowired
+	AddressService aservice;
+	
+	
+	@PostMapping("/myreg")
+	public Organization regOrganization(@RequestBody OrganizationReg org)
+	{
+		Role r = rservice.getRole(5);
+		Login l = new Login(org.getPassword(),org.getEmail(),org.getContactno(),r);
+		
+		Address a = new Address(org.getArea(),org.getCity(),org.getPincode());			
+				
+		Login saved = lservice.save(l)	;
+		
+		Address save = aservice.saveAddress(a);
+		
+		Organization o = new Organization(org.getOrg_name(),org.getOrg_type(),org.getOrg_regno(),a,l);
+				
+				
+			return oservice.Save(o)	;
+				
+				
+				
+				
+	}
+	
+	
+	
+	
+
+}

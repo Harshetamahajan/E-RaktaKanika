@@ -1,0 +1,95 @@
+package com.example.demo.entities;
+
+import java.util.Arrays;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name = "advertisement")
+public class Advertisement {
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int ad_id;
+	
+	@Column
+	private byte[] ad_img;
+	
+	@OneToOne
+	@JoinColumn(name="org_id")
+	Organization org_id;
+
+	@OneToOne
+	@JoinColumn(name="cid")
+	Camp cid;
+
+	public Advertisement() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Advertisement(int ad_id, byte[] ad_img, Organization org_id, Camp cid) {
+		super();
+		this.ad_id = ad_id;
+		this.ad_img = ad_img;
+		this.org_id = org_id;
+		this.cid = cid;
+	}
+
+	public Advertisement(byte[] ad_img, Organization org_id, Camp cid) {
+		super();
+		this.ad_img = ad_img;
+		this.org_id = org_id;
+		this.cid = cid;
+	}
+	
+
+
+	public Advertisement(Organization org_id, Camp cid) {
+		super();
+		this.org_id = org_id;
+		this.cid = cid;
+	}
+
+	public int getAd_id() {
+		return ad_id;
+	}
+
+	public void setAd_id(int ad_id) {
+		this.ad_id = ad_id;
+	}
+
+	public byte[] getAd_img() {
+		return ad_img;
+	}
+
+	public void setAd_img(byte[] ad_img) {
+		this.ad_img = ad_img;
+	}
+
+	public Organization getOrg_id() {
+		return org_id;
+	}
+
+	public void setOrg_id(Organization org_id) {
+		this.org_id = org_id;
+	}
+
+	public Camp getCid() {
+		return cid;
+	}
+
+	public void setCid(Camp cid) {
+		this.cid = cid;
+	}
+
+	@Override
+	public String toString() {
+		return "Advertisement [ad_id=" + ad_id + ", ad_img=" + Arrays.toString(ad_img) + ", org_id=" + org_id + ", cid="
+				+ cid + "]";
+	}
+	
+	
+
+}

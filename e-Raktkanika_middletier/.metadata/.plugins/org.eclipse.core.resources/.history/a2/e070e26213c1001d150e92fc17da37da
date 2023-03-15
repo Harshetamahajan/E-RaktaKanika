@@ -1,0 +1,10 @@
+package com.example.demo.entities;
+
+public class AdminReg {
+
+	
+	private int admin_id;
+	private String admin_name;
+	
+	private String email,contactno,password,area, city,pincode;
+}

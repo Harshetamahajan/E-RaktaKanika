@@ -1,0 +1,16 @@
+
+spring.datasource.url=jdbc:mysql://localhost:3306/eraktkanika
+spring.datasource.username=root
+spring.datasource.password=sammy26
+
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+spring.saltvalue=SjeAH2vj9BRew1P
+
+
+
+
+
+
+

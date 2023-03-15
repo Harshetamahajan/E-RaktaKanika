@@ -1,0 +1,25 @@
+package com.example.demo.repositories;
+
+import java.util.List;
+
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import com.example.demo.entities.Advertisement;
+import com.example.demo.entities.Camp;
+import com.example.demo.entities.Organization;
+import com.example.demo.entities.Selected_bloodbanks;
+
+@Repository
+public interface Selected_bloodbanksRepository extends JpaRepository<Selected_bloodbanks, Integer> {
+
+	
+	@Query("select a from Selected_bloodbanks a where cid=:cid")
+	public List<Selected_bloodbanks> getCamps();
+	
+	@Modifying
+	@Query("update Selected_bloodbanks set sel_bb_status = 1 where cid = :cid")
+	public List<Selected_bloodbanks> getC();
+}

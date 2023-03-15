@@ -1,0 +1,144 @@
+package com.example.demo.entities;
+
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+
+@Entity
+@Table(name="individual_user")
+public class IUser {
+	
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int uid;
+	
+	
+	@Column
+	private String uname;
+	
+	@Column
+	private String adharno;
+	
+	@OneToOne
+    @JoinColumn(name="address_id")
+	Address address_id;
+	
+	
+	@OneToOne
+	@JoinColumn(name="login_id")
+	Login login_id;
+
+
+
+	public IUser(String uname, String adharno, Address address_id, Login login_id) {
+		super();
+		this.uname = uname;
+		this.adharno = adharno;
+		this.address_id = address_id;
+		this.login_id = login_id;
+	}
+	
+
+	public int getUid() {
+		return uid;
+	}
+
+
+
+
+	public void setUid(int uid) {
+		this.uid = uid;
+	}
+
+
+
+
+	public String getUname() {
+		return uname;
+	}
+
+
+
+
+	public void setUname(String uname) {
+		this.uname = uname;
+	}
+
+
+
+
+	public String getAdharno() {
+		return adharno;
+	}
+
+
+
+
+	public void setAdharno(String adharno) {
+		this.adharno = adharno;
+	}
+
+
+
+	public Address getAddress_id() {
+		return address_id;
+	}
+
+
+
+
+	public void setAddress_id(Address address_id) {
+		this.address_id = address_id;
+	}
+
+
+
+
+	public Login getLogin_id() {
+		return login_id;
+	}
+
+
+
+
+	public void setLogin_id(Login login_id) {
+		this.login_id = login_id;
+	}
+
+
+
+
+	public IUser() {
+		super();
+			}
+
+
+	@Override
+	public String toString() {
+		return "IUser [uid=" + uid + ", uname=" + uname + ", adharno=" + adharno + ", address_id=" + address_id
+				+ ", login_id=" + login_id + "]";
+	}
+
+
+
+
+	
+	
+
+
+}
+
+
+
+
+
+
+

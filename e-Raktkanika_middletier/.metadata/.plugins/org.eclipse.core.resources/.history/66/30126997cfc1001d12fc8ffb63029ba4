@@ -1,0 +1,87 @@
+package com.example.demo.entities;
+
+import javax.persistence.*;
+
+
+@Entity
+@Table(name="selected_bloodbanks")
+public class Selected_bloodbanks {
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int sel_bb_id;
+	
+	@ManyToOne
+	@JoinColumn(name="cid")
+	Camp cid;
+	
+	@ManyToOne
+	@JoinColumn(name="bb_id")
+	BloodBank bb_id;
+	
+	@Column
+	private boolean sel_bb_status;
+
+	public Selected_bloodbanks() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Selected_bloodbanks(int sel_bb_id, Camp cid, BloodBank bb_id) {
+		super();
+		this.sel_bb_id = sel_bb_id;
+		this.cid = cid;
+		this.bb_id = bb_id;
+		this.sel_bb_status = false;
+	}
+
+	public Selected_bloodbanks(Camp cid, BloodBank bb_id) {
+		super();
+		this.cid = cid;
+		this.bb_id = bb_id;
+		this.sel_bb_status = false;
+	}
+
+	public int getSel_bb_id() {
+		return sel_bb_id;
+	}
+
+	public void setSel_bb_id(int sel_bb_id) {
+		this.sel_bb_id = sel_bb_id;
+	}
+
+	public Camp getCid() {
+		return cid;
+	}
+
+	public void setCid(Camp cid) {
+		this.cid = cid;
+	}
+
+	public BloodBank getBb_id() {
+		return bb_id;
+	}
+
+	public void setBb_id(BloodBank bb_id) {
+		this.bb_id = bb_id;
+	}
+
+	public boolean isSel_bb_status() {
+		return sel_bb_status;
+	}
+
+	public void setSel_bb_status(boolean sel_bb_status) {
+		this.sel_bb_status = sel_bb_status;
+	}
+
+	@Override
+	public String toString() {
+		return "Selected_bloodbanks [sel_bb_id=" + sel_bb_id + ", cid=" + cid + ", bb_id=" + bb_id + ", sel_bb_status="
+				+ sel_bb_status + "]";
+	}
+
+
+	
+	
+	
+
+}

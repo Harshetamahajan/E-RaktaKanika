@@ -1,0 +1,88 @@
+package com.example.demo.controllers;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entities.Address;
+import com.example.demo.entities.Login;
+import com.example.demo.entities.Organization;
+import com.example.demo.entities.OrganizationReg;
+import com.example.demo.entities.PassBasedEnc;
+import com.example.demo.entities.Role;
+import com.example.demo.entities.SaltValue;
+import com.example.demo.services.AddressService;
+import com.example.demo.services.LoginService;
+import com.example.demo.services.OrganizationService;
+import com.example.demo.services.RoleService;
+
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+public class OrganizationController {
+	
+	
+	@Autowired
+	LoginService lservice;
+	
+	@Autowired
+	OrganizationService oservice;
+	
+	@Autowired
+	RoleService rservice;
+	
+	@Autowired
+	AddressService aservice;
+	
+	@Autowired
+	SaltValue saltValue;
+	
+	
+	@PostMapping("/myreg")
+	public Organization regOrganization(@RequestBody OrganizationReg org)
+	{
+		Role r = rservice.getRole(5);
+		
+		String encrypted=PassBasedEnc.generateSecurePassword(org.getPassword(),saltValue.getSalt());
+		Login l = new Login(org.getPassword(),org.getEmail(),org.getContactno(),r,org.isStatus());
+		System.out.println("Default Org Status "+org.isStatus());
+		Address a = new Address(org.getArea(),org.getCity(),org.getPincode());			
+				
+		Login saved = lservice.save(l)	;
+		
+		Address saved1 = aservice.saveAddress(a);
+		
+		Organization o = new Organization(org.getOrg_name(),org.getOrg_type(),org.getOrg_regno(),a,l);
+				
+				
+			return oservice.Save(o)	;
+				
+				
+	}
+	
+	@GetMapping("/getorg")
+	public Organization getOrg(@RequestParam("login_id") int login_id)
+	{
+		Login l = lservice.getById(login_id);
+		System.out.println(l);
+		System.out.println(l.getLogin_id());
+		
+		return oservice.getOrganization(l);
+	}
+	
+
+	@GetMapping("/orgupdateprofile/{email}/{contactno}/{login_id}")
+	public int updateProfile(@PathVariable String email,@PathVariable String contactno,@PathVariable  int login_id)
+	{
+		System.out.println("printed"+email+""+contactno +""+login_id);
+		return  oservice.updateProfile(email,contactno,login_id);
+	}
+
+	
+	
+
+}

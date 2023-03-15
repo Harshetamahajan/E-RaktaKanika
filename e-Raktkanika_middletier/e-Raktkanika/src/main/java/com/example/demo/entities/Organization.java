@@ -1,0 +1,120 @@
+package com.example.demo.entities;
+
+import javax.persistence.*;
+
+@Entity
+@Table(name="organization")
+public class Organization {
+	
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+	private int org_id;
+	
+	@Column
+	private String org_name;
+	
+	@Column
+	private String org_type;
+	
+	@Column
+	private String org_regno;
+	
+	@OneToOne
+	@JoinColumn(name="address_id")
+	Address address_id;
+	
+	@OneToOne
+	@JoinColumn(name="login_id")
+	Login login_id;
+	
+	
+	public Organization() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public Organization(int org_id, String org_name, String org_type, String org_regno, Address address_id,
+			Login login_id) {
+		super();
+		this.org_id = org_id;
+		this.org_name = org_name;
+		this.org_type = org_type;
+		this.org_regno = org_regno;
+		this.address_id = address_id;
+		this.login_id = login_id;
+		
+	}
+	public Organization(String org_name, String org_type, String org_regno, Address address_id,
+			Login login_id) {
+		super();
+		
+		this.org_name = org_name;
+		this.org_type = org_type;
+		this.org_regno = org_regno;
+		this.address_id = address_id;
+		this.login_id = login_id;
+		
+	}
+
+
+
+	public int getOrg_id() {
+		return org_id;
+	}
+
+	public void setOrg_id(int org_id) {
+		this.org_id = org_id;
+	}
+
+	public String getOrg_name() {
+		return org_name;
+	}
+
+	public void setOrg_name(String org_name) {
+		this.org_name = org_name;
+	}
+
+	public String getOrg_type() {
+		return org_type;
+	}
+
+	public void setOrg_type(String org_type) {
+		this.org_type = org_type;
+	}
+
+	public String getOrg_regno() {
+		return org_regno;
+	}
+
+	public void setOrg_regno(String org_regno) {
+		this.org_regno = org_regno;
+	}
+
+	public Address getAddress_id() {
+		return address_id;
+	}
+
+	public void setAddress_id(Address address_id) {
+		this.address_id = address_id;
+	}
+
+	public Login getLogin_id() {
+		return login_id;
+	}
+
+	public void setLogin_id(Login login_id) {
+		this.login_id = login_id;
+	}
+
+	@Override
+	public String toString() {
+		return "Organization [org_id=" + org_id + ", org_name=" + org_name + ", org_type=" + org_type + ", org_regno="
+				+ org_regno + ", address_id=" + address_id + ", login_id=" + login_id + "]";
+	}
+
+	
+	
+	
+	
+	
+}

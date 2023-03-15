@@ -1,0 +1,79 @@
+package com.example.demo.controllers;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.entities.Address;
+import com.example.demo.entities.Advertisement;
+import com.example.demo.entities.BloodBank;
+import com.example.demo.entities.Camp;
+import com.example.demo.entities.CampReg;
+import com.example.demo.entities.Organization;
+import com.example.demo.services.AddressService;
+import com.example.demo.services.AdvertisementService;
+import com.example.demo.services.BloodBankService;
+import com.example.demo.services.CampService;
+import com.example.demo.services.OrganizationService;
+
+
+@CrossOrigin(origins = "http://localhost:3000")
+@RestController
+public class CampController {
+	
+	@Autowired
+	OrganizationService oservice;
+	
+	@Autowired 
+	CampService cservice;
+	
+	@Autowired
+	AddressService aservice;
+	
+	@Autowired
+	BloodBankService bservice;
+	
+
+	
+	@Autowired
+	AdvertisementService adservice;
+	
+	
+	@PostMapping("/regcamp")
+	public Camp regCamp (@RequestBody CampReg cr)
+	{
+		Address a = new Address(cr.getArea(),cr.getCity(),cr.getPincode());	
+		
+		Address saved1 = aservice.saveAddress(a);
+		Organization os = oservice.getOrgById(cr.getOrg_id());
+		BloodBank b1=bservice.getById(cr.getBb_id());
+		
+		Camp c = new Camp(cr.getCname(),cr.getCdate(),cr.getCtime(),a,os,b1);
+		
+		Camp savedc=cservice.Save(c);
+		
+		
+		return cservice.Save(c);
+		
+		
+	}
+	
+	@GetMapping("/getcamps")
+	public List<Camp> getCamps(@RequestParam("org_id") int org_id)
+	{
+		Organization o1=oservice.getOrgById(org_id);
+		return cservice.getCamps(o1);
+	}
+	
+	
+	
+
+}
+
+

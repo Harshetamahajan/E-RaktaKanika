@@ -1,0 +1,21 @@
+package com.example.demo.services;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.entities.Advertisement;
+import com.example.demo.repositories.AdvertisementRepository;
+
+@Service
+public class AdvertisementService {
+	
+	@Autowired
+	AdvertisementRepository adrepo;
+	
+	
+	public Advertisement saveAd(Advertisement ad)
+	{
+		return adrepo.save(ad);
+	}
+
+}

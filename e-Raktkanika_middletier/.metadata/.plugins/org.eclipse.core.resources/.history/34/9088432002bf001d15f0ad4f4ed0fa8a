@@ -1,0 +1,12 @@
+package com.example.demo.entities;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "address")
+public class Advertisement {
+	
+	
+
+}
